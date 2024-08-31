@@ -49,3 +49,6 @@ class Pet(models.Model):
         else:
             # Call the original save method for existing records
             super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
