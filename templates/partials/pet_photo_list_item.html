@@ -14,7 +14,7 @@
             </a>
             <h3>
                 <a href="{% url 'profile details' pk=1 %}">
-                    Diyan Kalaydzhiev
+                    admin
                 </a>
                 <br>
                 <span>{{ photo.location }}</span>
@@ -56,7 +56,7 @@
             <h4 class="details">See details</h4>
         </a>
 
-        <h5 class="postTime">{{ photo.created_at|date:'d/m/Y' }}19/09/2022</h5>
+        <h5 class="postTime">{{ photo.date_of_publication|date:'d/m/Y' }}19/09/2022</h5>
 
         <div class="addComments">
             <form method="post" action="#">

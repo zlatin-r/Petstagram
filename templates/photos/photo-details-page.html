@@ -11,7 +11,7 @@
 
             <p class="pet-details">{{ object.description }}</p>
 
-            <h5 class="postTime">{{ object.created_at }}</h5>
+            <h5 class="postTime">{{ object.date_of_publication }}</h5>
 
             <div class="comments">
                 {% for comment in object.comment_set.all %}
