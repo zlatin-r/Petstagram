@@ -7,14 +7,14 @@
     <div class="container">
         <div class="col-9">
 
-            {% include "partials/pet_photo_list_item.html" with photo=pet_photo %}
+            {% include "partials/pet_photo_list_item.html" with photo=object %}
 
-            <p class="pet-details">{{ pet_photo.description }}</p>
+            <p class="pet-details">{{ object.description }}</p>
 
-            <h5 class="postTime">{{ pet_photo.created_at }}</h5>
+            <h5 class="postTime">{{ object.created_at }}</h5>
 
             <div class="comments">
-                {% for comment in pet_photo.comment_set.all %}
+                {% for comment in object.comment_set.all %}
                     <div class="top">
                         <div class="userDetails">
                             <div class="comment-data">
@@ -34,12 +34,8 @@
                             <span>{{ comment.date_time_of_publication }}</span>
                         </div>
                     </div>
-                {% empty %}
-                    <p>No comments yet</p>
                 {% endfor %}
             </div>
-            <!-- End Comments Section -->
-
         </div>
     </div>
 

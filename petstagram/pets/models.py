@@ -26,6 +26,9 @@ class Pet(models.Model):
         editable=False
     )
 
+    def __str__(self):
+        return self.name
+
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
 
@@ -33,6 +36,3 @@ class Pet(models.Model):
             self.slug = slugify(f"{self.name}-{self.id}")
 
         return super().save(*args, **kwargs)
-
-    def __str__(self):
-        return self.name

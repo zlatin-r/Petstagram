@@ -6,6 +6,9 @@ from petstagram.photos.validators import validate_file_size
 
 
 class Photo(models.Model):
+    class Meta:
+        ordering = ['-date_of_publication']
+
     photo = models.ImageField(
         upload_to='pet_photos/',
         validators=(

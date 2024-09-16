@@ -1,23 +1,37 @@
-from django.shortcuts import render
+from django.urls import reverse
 
-from petstagram.pets.models import Pet
+from django.shortcuts import render
+from django.views import generic as view
+
+from petstagram.photos.forms import PetPhotoCreateForm
 from petstagram.photos.models import Photo
 
 
-# Create your views here.
-def add_photo(request):
-    pets = Pet.objects.all()  # Fetch all pets from the database
-    context = {
-        'pets': pets,
-    }
-    return render(request, "photos/photo-add-page.html", context)
+class PetPhotoCreateView(view.CreateView):
+    form_class = PetPhotoCreateForm
+    template_name = "photos/photo-add-page.html"
+
+    def get_success_url(self):
+        return reverse("details photo", kwargs = {"pk": self.object.pk})
+
+# def add_photo(request):
+#     pets = Pet.objects.all()  # Fetch all pets from the database
+#     context = {
+#         'pets': pets,
+#     }
+#     return render(request, "photos/photo-add-page.html", context)
 
 
-def details_photo(request, pk):
-    context = {
-        "pet_photo": Photo.objects.get(pk=pk),
-    }
-    return render(request, "photos/photo-details-page.html", context)
+class PetPhotoDetailView(view.DetailView):
+    queryset = Photo.objects.all()
+    template_name = "photos/photo-details-page.html"
+
+
+# def details_photo(request, pk):
+#     context = {
+#         "pet_photo": Photo.objects.get(pk=pk),
+#     }
+#     return render(request, "photos/photo-details-page.html", context)
 
 
 def edit_photo(request, pk):
