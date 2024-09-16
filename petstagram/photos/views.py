@@ -47,5 +47,8 @@ class PetPhotoEditView(view.UpdateView):
     template_name = "photos/photo-edit-page.html"
     form_class = PetPhotoEditForm
 
+    def get_success_url(self):
+        return reverse("details photo", kwargs={"pk": self.object.pk})
+
 # def edit_photo(request, pk):
 #     return render(request, "photos/photo-edit-page.html")

@@ -16,7 +16,7 @@ class PetPhotoCreateForm(PetPhotoBaseForm):
 
 
 class PetPhotoEditForm(ReadOnlyFieldFormMixin, PetPhotoBaseForm):
-    readonly_fields = ("photo",)
+    readonly_fields = ("photo", "tagged_pets")
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
